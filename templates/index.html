@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather Information</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<style>
+    body{
+        font-family: cursive;
+        padding: 0;
+        margin: 0;
+        background-image: url("https://i0.wp.com/codemyui.com/wp-content/uploads/2016/05/css-cloud.gif");
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 50vh;
+        width: 100%;
+    }
+
+    .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+   :root {
+  --color-background: #000119;
+  --stroke-width: calc(1em / 16);
+  --font-size: 5vmin;
+  --font-weight: 700;
+  --letter-spacing: calc(1em / 8);
+}
+   h2{
+    font-weight: 550;
+    padding: 10px;
+    background-clip: text;
+  background-image: linear-gradient(to right, #09f1b8, #00a2ff, #ff00d2, #fed90f);
+  color: var(--color-background);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  letter-spacing: var(--letter-spacing);
+  padding: calc(--stroke-width / 2);
+  -webkit-text-stroke-color: transparent;
+  -webkit-text-stroke-width: var(--stroke-width);
+   }
+   label{
+    font-size: large;
+    font-weight: bold;
+   }
+
+   .btn{
+    color: black;
+    font-weight: 550;
+   }
+</style>
+
+<body>
+    <section class="container">
+       
+        <form method="POST" action="/get_weather">
+            <h2 class="">Weather Forecasting</h2>
+            <label for="city">City Name:</label>
+            <input type="text" id="city" name="city" required><br><br>
+            <input type="submit" value="Get Weather Details" class="btn btn-outline-light">
+        </form>
+    </section>
+
+</body>
+
+</html>

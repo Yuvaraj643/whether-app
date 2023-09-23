@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather Information</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .centered-table {
+            margin: 0 auto; /* Center the table horizontally */
+            max-width: 80%; /* Set the maximum width for the table */
+            color: white;
+        }
+        table{
+            color : white;
+        }
+        body{
+        font-family: cursive;
+        padding: 0;
+        margin: 0;
+        /* background-image: url("https://i.ytimg.com/vi/O7oob2DDOnE/maxresdefault.jpg"); */
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 50vh;
+        width: 100%;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-success">Weather Information for {{ city }}</h2>
+        <p class="mb-0">
+            <span class="text-muted">City:</span>
+            <span class="text-success h3">{{ city }}</span>
+        </p>
+        <p class="mb-0">
+            <span class="text-muted">Temperature:</span>
+            <span class="text-danger h4">{{ temperature }} Kelvin</span>
+        </p>
+        <p class="mb-0">
+            <span class="text-muted">Weather:</span>
+            <span class="text-info">{{ weather_description }}</span>
+        </p>
+        
+
+        <h3 class="text-primary">Additional Weather Details:</h3>
+        <ul>
+            <li>Coordinates: Latitude {{ weather_data.coord.lat }}, Longitude {{ weather_data.coord.lon }}</li>
+            <li>Pressure: {{ weather_data.main.pressure }} hPa</li>
+            <li>Humidity: {{ weather_data.main.humidity }}%</li>
+            <li>Visibility: {{ weather_data.visibility }} meters</li>
+            <li>Wind Speed: {{ weather_data.wind.speed }} m/s</li>
+            <li>Cloud Cover: {{ weather_data.clouds.all }}%</li>
+        </ul>
+        <h3 class="text-primary">Sunrise and Sunset:</h3>
+        <p>Sunrise: {{ sunrise_time }}</p>
+        <p>Sunset: {{ sunset_time }}</p>
+    </div>
+
+    <h2 class="text-primary text-center">Weather Forecast for {{ city }}</h2>
+
+    <h3 class="text-primary text-center">Hourly Forecast:</h3>
+    
+    <div class="centered-table">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date and Time</th>
+                    <th>Temperature (°C)</th>
+                    <th>Weather Description</th>
+                    <th>Humidity (%)</th>
+                    <th>Wind Speed (m/s)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for forecast in hourly_forecast_info %}
+                <tr>
+                    <td>{{ forecast.dt_txt }}</td>
+                    <td>{{ forecast.temperature }}</td>
+                    <td>{{ forecast.weather_description }}</td>
+                    <td>{{ forecast.humidity }}</td>
+                    <td>{{ forecast.wind_speed }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
